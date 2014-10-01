@@ -28,7 +28,7 @@ ADMNeuroPsyLoadCSV <- function(CsvList) {
   # Profile
   source('LoadProfile.r')
   # Body parameter
-  source('LoadBody.r')
+  source('LoadBody.r',  encoding = "utf-8")
   # Handiness
   source('LoadHandiness.r')
   # GDS

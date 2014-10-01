@@ -9,6 +9,9 @@
 #
 
 #ADMNeuroPsyNorm <- function(CodingSheetFolderPath) {
+  # You should change to your path.
+  CodingSheetFolderPath = 'D:\\Dropbox\\GIBMS_BMLGoh\\ADM\\Data\\CodingSheetCSV'
+
   Now12 = 140929170742
   LatestCodingNum = 123 # get latest coding done
   
