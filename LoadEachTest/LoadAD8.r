@@ -6,16 +6,23 @@
 #
 # History:
 # 140915 skylikewater - first release
+# 141002 skylikewater - reconstruction
 #
 
-LoadAD8 <- function(Task, NowCodingNum) {
-  if (Task == 1) {
-    # Declaration 
-    AD8 <<- array(0,dim = c(LatestCodingNum,1))
-  } else if (Task == 2) {
-    # Read
-    AD8[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[39]))
-  } else if (Task == 3) {
-    return("AD8 = AD8, ")
-  }
+LoadAD8 <- function(Task, CodingNum, LoadTaskPath) {
+  # if Task == 1
+  # CodingNum is LatestCodingNum
+  # else if Task == 2
+  # CodingNum is NowCodingNum
+  
+  setwd(LoadTaskPath)
+  source('LoadTask.r', encoding = 'utf-8')
+
+  VarName = c("AD8")
+  VarType = c(2)
+  VarXDim = c(1)
+  VarYDim = c(39)
+  
+  Results = LoadTask(Task, CodingNum, VarName, VarType, VarXDim, VarYDim)
+  return(Results)
 }

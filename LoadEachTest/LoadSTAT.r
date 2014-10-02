@@ -8,114 +8,36 @@
 #
 # History:
 # 140915 skylikewater - first release
+# 141002 skylikewater - reconstruction
 #
 
-LoadSTAT <- function(Task, NowCodingNum) {
-  if (Task == 1) {
-    # Declaration 
-    Trait_01 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_02 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_03 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_04 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_05 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_06 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_07 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_08 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_09 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_10 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_11 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_12 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_13 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_14 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_15 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_16 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_17 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_18 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_19 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_20 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_21 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_22 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_23 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_24 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_25 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_26 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_27 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_28 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_29 <<- array(0,dim = c(LatestCodingNum,1))
-    Trait_30 <<- array(0,dim = c(LatestCodingNum,1))
-      State_01 <<- array(0,dim = c(LatestCodingNum,1))
-      State_02 <<- array(0,dim = c(LatestCodingNum,1))
-      State_03 <<- array(0,dim = c(LatestCodingNum,1))
-      State_04 <<- array(0,dim = c(LatestCodingNum,1))
-      State_05 <<- array(0,dim = c(LatestCodingNum,1))
-      State_06 <<- array(0,dim = c(LatestCodingNum,1))
-      State_07 <<- array(0,dim = c(LatestCodingNum,1))
-      State_08 <<- array(0,dim = c(LatestCodingNum,1))
-      State_09 <<- array(0,dim = c(LatestCodingNum,1))
-      State_10 <<- array(0,dim = c(LatestCodingNum,1))
-      State_11 <<- array(0,dim = c(LatestCodingNum,1))
-      State_12 <<- array(0,dim = c(LatestCodingNum,1))
-      State_13 <<- array(0,dim = c(LatestCodingNum,1))
-      State_14 <<- array(0,dim = c(LatestCodingNum,1))
-      State_15 <<- array(0,dim = c(LatestCodingNum,1))
-      State_16 <<- array(0,dim = c(LatestCodingNum,1))
-      State_17 <<- array(0,dim = c(LatestCodingNum,1))
-      State_18 <<- array(0,dim = c(LatestCodingNum,1))
-      State_19 <<- array(0,dim = c(LatestCodingNum,1))
-      State_20 <<- array(0,dim = c(LatestCodingNum,1))
-  } else if (Task == 2) {
-    # Read
-    Trait_01[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[33]))
-    Trait_02[NowCodingNum] <<- as.numeric(as.character(DataTemp$V2[33]))
-    Trait_03[NowCodingNum] <<- as.numeric(as.character(DataTemp$V3[33]))
-    Trait_04[NowCodingNum] <<- as.numeric(as.character(DataTemp$V4[33]))
-    Trait_05[NowCodingNum] <<- as.numeric(as.character(DataTemp$V5[33]))
-    Trait_06[NowCodingNum] <<- as.numeric(as.character(DataTemp$V6[33]))
-    Trait_07[NowCodingNum] <<- as.numeric(as.character(DataTemp$V7[33]))
-    Trait_08[NowCodingNum] <<- as.numeric(as.character(DataTemp$V8[33]))
-    Trait_09[NowCodingNum] <<- as.numeric(as.character(DataTemp$V9[33]))
-    Trait_10[NowCodingNum] <<- as.numeric(as.character(DataTemp$V10[33]))
-    Trait_11[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[35]))
-    Trait_12[NowCodingNum] <<- as.numeric(as.character(DataTemp$V2[35]))
-    Trait_13[NowCodingNum] <<- as.numeric(as.character(DataTemp$V3[35]))
-    Trait_14[NowCodingNum] <<- as.numeric(as.character(DataTemp$V4[35]))
-    Trait_15[NowCodingNum] <<- as.numeric(as.character(DataTemp$V5[35]))
-    Trait_16[NowCodingNum] <<- as.numeric(as.character(DataTemp$V6[35]))
-    Trait_17[NowCodingNum] <<- as.numeric(as.character(DataTemp$V7[35]))
-    Trait_18[NowCodingNum] <<- as.numeric(as.character(DataTemp$V8[35]))
-    Trait_19[NowCodingNum] <<- as.numeric(as.character(DataTemp$V9[35]))
-    Trait_20[NowCodingNum] <<- as.numeric(as.character(DataTemp$V10[35]))
-    Trait_21[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[37]))
-    Trait_22[NowCodingNum] <<- as.numeric(as.character(DataTemp$V2[37]))
-    Trait_23[NowCodingNum] <<- as.numeric(as.character(DataTemp$V3[37]))
-    Trait_24[NowCodingNum] <<- as.numeric(as.character(DataTemp$V4[37]))
-    Trait_25[NowCodingNum] <<- as.numeric(as.character(DataTemp$V5[37]))
-    Trait_26[NowCodingNum] <<- as.numeric(as.character(DataTemp$V6[37]))
-    Trait_27[NowCodingNum] <<- as.numeric(as.character(DataTemp$V7[37]))
-    Trait_28[NowCodingNum] <<- as.numeric(as.character(DataTemp$V8[37]))
-    Trait_29[NowCodingNum] <<- as.numeric(as.character(DataTemp$V9[37]))
-    Trait_30[NowCodingNum] <<- as.numeric(as.character(DataTemp$V10[37]))
-      State_01[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[28]))
-      State_02[NowCodingNum] <<- as.numeric(as.character(DataTemp$V2[28]))
-      State_03[NowCodingNum] <<- as.numeric(as.character(DataTemp$V3[28]))
-      State_04[NowCodingNum] <<- as.numeric(as.character(DataTemp$V4[28]))
-      State_05[NowCodingNum] <<- as.numeric(as.character(DataTemp$V5[28]))
-      State_06[NowCodingNum] <<- as.numeric(as.character(DataTemp$V6[28]))
-      State_07[NowCodingNum] <<- as.numeric(as.character(DataTemp$V7[28]))
-      State_08[NowCodingNum] <<- as.numeric(as.character(DataTemp$V8[28]))
-      State_09[NowCodingNum] <<- as.numeric(as.character(DataTemp$V9[28]))
-      State_10[NowCodingNum] <<- as.numeric(as.character(DataTemp$V10[28]))
-      State_11[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[30]))
-      State_12[NowCodingNum] <<- as.numeric(as.character(DataTemp$V2[30]))
-      State_13[NowCodingNum] <<- as.numeric(as.character(DataTemp$V3[30]))
-      State_14[NowCodingNum] <<- as.numeric(as.character(DataTemp$V4[30]))
-      State_15[NowCodingNum] <<- as.numeric(as.character(DataTemp$V5[30]))
-      State_16[NowCodingNum] <<- as.numeric(as.character(DataTemp$V6[30]))
-      State_17[NowCodingNum] <<- as.numeric(as.character(DataTemp$V7[30]))
-      State_18[NowCodingNum] <<- as.numeric(as.character(DataTemp$V8[30]))
-      State_19[NowCodingNum] <<- as.numeric(as.character(DataTemp$V9[30]))
-      State_20[NowCodingNum] <<- as.numeric(as.character(DataTemp$V10[30]))
-  } else if (Task == 3) {
-    return("Trait_01 = Trait_01,       Trait_02 = Trait_02,       Trait_03 = Trait_03,       Trait_04 = Trait_04,       Trait_05 = Trait_05,       Trait_06 = Trait_06,       Trait_07 = Trait_07,       Trait_08 = Trait_08,       Trait_09 = Trait_09,       Trait_10 = Trait_10,       Trait_11 = Trait_11,       Trait_12 = Trait_12,       Trait_13 = Trait_13,       Trait_14 = Trait_14,       Trait_15 = Trait_15,       Trait_16 = Trait_16,       Trait_17 = Trait_17,       Trait_18 = Trait_18,       Trait_19 = Trait_19,       Trait_20 = Trait_20,       Trait_21 = Trait_21,       Trait_22 = Trait_22,       Trait_23 = Trait_23,       Trait_24 = Trait_24,       Trait_25 = Trait_25,       Trait_26 = Trait_26,       Trait_27 = Trait_27,       Trait_28 = Trait_28,       Trait_29 = Trait_29,       Trait_30 = Trait_30,         State_01 = State_01,         State_02 = State_02,         State_03 = State_03,         State_04 = State_04,         State_05 = State_05,         State_06 = State_06,         State_07 = State_07,         State_08 = State_08,         State_09 = State_09,         State_10 = State_10,         State_11 = State_11,         State_12 = State_12,         State_13 = State_13,         State_14 = State_14,         State_15 = State_15,         State_16 = State_16,         State_17 = State_17,         State_18 = State_18,         State_19 = State_19,         State_20 = State_20, ")
+LoadSTAT <- function(Task, CodingNum, LoadTaskPath) {
+  # if Task == 1
+  # CodingNum is LatestCodingNum
+  # else if Task == 2
+  # CodingNum is NowCodingNum
+  
+  setwd(LoadTaskPath)
+  source('LoadTask.r', encoding = 'utf-8')
+
+  VarName = c(1:20, 1:30)
+  for (VarNameNum in 1:length(VarName)) {
+    if (as.numeric(VarName[VarNameNum]) < 10) {
+	  VarName[VarNameNum] = paste("0", VarName[VarNameNum], sep = "")
+	} else {
+	  VarName[VarNameNum] = VarName[VarNameNum]
+	}
+	if (as.numeric(VarName[VarNameNum]) <= 20) {
+	  VarName[VarNameNum] = paste("State_", VarName[VarNameNum], sep = "")
+	} else {
+	  VarName[VarNameNum] = paste("Trait_", VarName[VarNameNum], sep = "")
+	}
   }
+  VarType = array(2,dim = c(50,1))
+  VarXDim = rep(c(1:10), times = 5)
+  VarYDim = c(array(28,dim = c(10,1)), array(30,dim = c(10,1)),
+              array(33,dim = c(10,1)), array(35,dim = c(10,1)), array(37,dim = c(10,1)))
+  
+  Results = LoadTask(Task, CodingNum, VarName, VarType, VarXDim, VarYDim)
+  return(Results)
 }

@@ -7,22 +7,23 @@
 #
 # History:
 # 140915 skylikewater - first release
+# 141002 skylikewater - reconstruction
 #
 
-LoadExercise <- function(Task, NowCodingNum) {
-  if (Task == 1) {
-    # Declaration 
-    Exer_Regu <<- rep("",times = LatestCodingNum)
-    Exer_Freq <<- rep("",times = LatestCodingNum)
-    Exer_Dura <<- rep("",times = LatestCodingNum)
-    Exer_Strength <<- rep("",times = LatestCodingNum)
-  } else if (Task == 2) {
-    # Read
-    Exer_Regu[NowCodingNum] <<- as.character(DataTemp$V1[70])
-    Exer_Freq[NowCodingNum] <<- as.character(DataTemp$V2[70])
-    Exer_Dura[NowCodingNum] <<- as.character(DataTemp$V3[70])
-    Exer_Strength[NowCodingNum] <<- as.character(DataTemp$V4[70])
-  } else if (Task == 3) {
-    return("Exer_Regu = Exer_Regu,     Exer_Freq = Exer_Freq,     Exer_Dura = Exer_Dura,     Exer_Strength = Exer_Strength, ")
-  }
+LoadExercise <- function(Task, CodingNum, LoadTaskPath) {
+  # if Task == 1
+  # CodingNum is LatestCodingNum
+  # else if Task == 2
+  # CodingNum is NowCodingNum
+  
+  setwd(LoadTaskPath)
+  source('LoadTask.r', encoding = 'utf-8')
+
+  VarName = c("Exer_Regu", "Exer_Freq", "Exer_Dura", "Exer_Strength")
+  VarType = c(1, 1, 1, 1)
+  VarXDim = c(1, 2, 3, 4)
+  VarYDim = c(66, 66, 66, 66)
+  
+  Results = LoadTask(Task, CodingNum, VarName, VarType, VarXDim, VarYDim)
+  return(Results)
 }

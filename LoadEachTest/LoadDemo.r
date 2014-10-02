@@ -10,44 +10,22 @@
 # 141002 skylikewater - finished all component
 #
 
-LoadDemo <- function(Task, NowCodingNum) {
-  if (Task == 1) {
-    # Declaration 
-	ColorBlind <<- array(0,dim = c(LatestCodingNum,1))
-    Mailing <<- rep("",times = LatestCodingNum)
-    Edu <<- rep("",times = LatestCodingNum)
-    EduYr <<- array(0,dim = c(LatestCodingNum,1))
-    Marry <<- rep("",times = LatestCodingNum)
-	MarryOther <<- rep("",times = LatestCodingNum)
-    Ethnic <<- rep("",times = LatestCodingNum)
-	EthnicOther <<- rep("",times = LatestCodingNum)
-    HouseStyle <<- rep("",times = LatestCodingNum)
-	HouseStyleOther <<- rep("",times = LatestCodingNum)
-	LiveAlone <<- rep("",times = LatestCodingNum)
-    CareerStatus <<- rep("",times = LatestCodingNum)
-	RetireYr <<- array(0,dim = c(LatestCodingNum,1))
-    Career <<- rep("",times = LatestCodingNum)
-    CareerLoad <<- rep("",times = LatestCodingNum)
-    CareerSpouse <<- rep("",times = LatestCodingNum)
-  } else if (Task == 2) {
-    # Read
-	ColorBlind[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[42]))
-    Mailing[NowCodingNum] <<- as.character(DataTemp$V2[42])
-    Edu[NowCodingNum] <<- as.character(DataTemp$V3[42])
-    EduYr[NowCodingNum] <<- as.character(DataTemp$V4[42])
-    Marry[NowCodingNum] <<- as.character(DataTemp$V5[42])
-	MarryOther[NowCodingNum] <<- as.character(DataTemp$V6[42])
-    Ethnic[NowCodingNum] <<- as.character(DataTemp$V7[42])
-	EthnicOther[NowCodingNum] <<- as.character(DataTemp$V8[42])
-    HouseStyle[NowCodingNum] <<- as.character(DataTemp$V1[44])
-	HouseStyleOther[NowCodingNum] <<- as.character(DataTemp$V2[44])
-	LiveAlone[NowCodingNum] <<- as.character(DataTemp$V3[44])
-    CareerStatus[NowCodingNum] <<- as.character(DataTemp$V4[44])
-	RetireYr[NowCodingNum] <<- as.numeric(as.character(DataTemp$V5[44]))
-    Career[NowCodingNum] <<- as.character(DataTemp$V6[44])
-    CareerLoad[NowCodingNum] <<- as.character(DataTemp$V7[44])
-    CareerSpouse[NowCodingNum] <<- as.character(DataTemp$V8[44])
-  } else if (Task == 3) {
-    return("ColorBlind = ColorBlind, Mailing = Mailing, Edu = Edu, EduYr = EduYr, Marry = Marry, MarryOther = MarryOther, Ethnic = Ethnic, EthnicOther = EthnicOther, HouseStyle = HouseStyle, HouseStyleOther = HouseStyleOther, LiveAlone = LiveAlone, CareerStatus = CareerStatus, RetireYr = RetireYr, Career = Career, CareerLoad = CareerLoad, CareerSpouse = CareerSpouse, ")
-  }
+LoadDemo <- function(Task, CodingNum, LoadTaskPath) {
+  # if Task == 1
+  # CodingNum is LatestCodingNum
+  # else if Task == 2
+  # CodingNum is NowCodingNum
+  
+  setwd(LoadTaskPath)
+  source('LoadTask.r', encoding = 'utf-8')
+
+  VarName = c("ColorBlind", "Mailing", "Edu", "EduYr", "Marry", "MarryOther", "Ethnic", "EthnicOther",
+              "HouseStyle", "HouseStyleOther", "LiveAlone", "CareerStatus", "RetireYr", "Career", "CareerLoad", "CareerSpouse")
+  VarType = c(2, 1, 1, 2, 1, 1, 1, 1,
+              1, 1, 1, 1, 2, 1, 1, 1)
+  VarXDim = c(1:8, 1:8)
+  VarYDim = c(array(42,dim = c(8,1)), array(44,dim = c(8,1)))
+  
+  Results = LoadTask(Task, CodingNum, VarName, VarType, VarXDim, VarYDim)
+  return(Results)
 }

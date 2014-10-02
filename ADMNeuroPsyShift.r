@@ -20,7 +20,7 @@ ADMNeuroPsyNorm <- function(CodingSheetFolderPath) {
   LatestCodingNum = as.numeric(substr(CsvList[length(CsvList)],start=5,stop=7)) # get latest coding done
   # so this code only can use in filename : "ADMSXXX.csv", XXX for Subj. Num
 
-  for (CsvListNum in 2:length(CsvList)) {
+  for (CsvListNum in 1:length(CsvList)) {
     NowCodingNum = as.numeric(substr(CsvList[CsvListNum],start = 5,stop = 7))
 	# don't load header, missing data put null
 	DataTemp = read.csv(CsvList[CsvListNum], header = FALSE, na.string = "NULL")

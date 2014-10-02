@@ -6,26 +6,31 @@
 #
 # History:
 # 140915 skylikewater - first release
+# 141002 skylikewater - reconstruction
 #
 
-LoadSelfEva <- function(Task, NowCodingNum) {
-  if (Task == 1) {
-    # Declaration
-    SelfEva_1 <<- array(0,dim = c(LatestCodingNum,1))
-    SelfEva_2 <<- array(0,dim = c(LatestCodingNum,1))
-    SelfEva_3 <<- array(0,dim = c(LatestCodingNum,1))
-    SelfEva_4 <<- array(0,dim = c(LatestCodingNum,1))
-    SelfEva_5 <<- array(0,dim = c(LatestCodingNum,1))
-    SelfEva_6 <<- array(0,dim = c(LatestCodingNum,1))
-  } else if (Task == 2) {
-    # Read
-    SelfEva_1[NowCodingNum] <<- as.numeric(as.character(DataTemp$V1[24]))
-    SelfEva_2[NowCodingNum] <<- as.numeric(as.character(DataTemp$V2[24]))
-    SelfEva_3[NowCodingNum] <<- as.numeric(as.character(DataTemp$V3[24]))
-    SelfEva_4[NowCodingNum] <<- as.numeric(as.character(DataTemp$V4[24]))
-    SelfEva_5[NowCodingNum] <<- as.numeric(as.character(DataTemp$V5[24]))
-    SelfEva_6[NowCodingNum] <<- as.numeric(as.character(DataTemp$V6[24]))
-  } else if (Task == 3) {
-    return("SelfEva_1 = SelfEva_1,     SelfEva_2 = SelfEva_2,     SelfEva_3 = SelfEva_3,     SelfEva_4 = SelfEva_4,     SelfEva_5 = SelfEva_5,     SelfEva_6 = SelfEva_6, ")
+LoadSelfEva <- function(Task, CodingNum, LoadTaskPath) {
+  # if Task == 1
+  # CodingNum is LatestCodingNum
+  # else if Task == 2
+  # CodingNum is NowCodingNum
+  
+  setwd(LoadTaskPath)
+  source('LoadTask.r', encoding = 'utf-8')
+
+  VarName = c(1:6)
+  for (VarNameNum in 1:length(VarName)) {
+    if (as.numeric(VarName[VarNameNum]) < 10) {
+	  VarName[VarNameNum] = paste("0", VarName[VarNameNum], sep = "")
+	} else {
+	  VarName[VarNameNum] = VarName[VarNameNum]
+	}
   }
+  VarName = paste("SelfEva_", VarName, sep = "")
+  VarType = array(2,dim = c(6,1))
+  VarXDim = c(1:6)
+  VarYDim = c(array(24,dim = c(6,1)))
+  
+  Results = LoadTask(Task, CodingNum, VarName, VarType, VarXDim, VarYDim)
+  return(Results)
 }
