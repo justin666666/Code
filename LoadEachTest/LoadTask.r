@@ -111,7 +111,7 @@ LoadTask <- function(Task, CodingNum, VarName, VarType, VarXDim, VarYDim) {
 	                          Data$BodyFatCri[NowCodingNum] = 'NA'
 	                        }
 	                      } else if (Data$Sex[NowCodingNum] == '女') {
-	                        if (is.na(Data$Data$BodyFat[NowCodingNum])) {
+	                        if (is.na(Data$BodyFat[NowCodingNum])) {
 	                          Data$BodyFatCri[NowCodingNum] = 'NA'
 	                        } else if (Data$BodyFat[NowCodingNum] < 20) {
 	                          Data$BodyFatCri[NowCodingNum] = 'Underfat'

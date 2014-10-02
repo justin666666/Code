@@ -13,29 +13,33 @@
 # 140902 skylikewater - fix for 3.1.1
 # 140915 skylikewater - modulation
 # 140923 skylikewater - birthday and education
+# 141002 skylikewater - reconstruction
 #
 
 ADMNeuroPsyLoadCSV <- function(CsvList) {
   # [Undo] check any other sub-file name in Folder
   # and/or file format error
 
+  #LatestCodingNum = 10
   LatestCodingNum = as.numeric(substr(CsvList[length(CsvList)],start=5,stop=7)) # get latest coding done
   # so this code only can use in filename : "ADMSXXX.csv", XXX for Subj. Num
 
-  SubTestList = c("Profile", "Body", "Handiness", "GDS", "SelfEva", "STAT", "AD8",
+  SubTestList = c("Profile", # "Body", "Handiness", "GDS", "SelfEva", "STAT", 
+                "AD8",  
                   "Demo", "Language", "MedHistory", "DisFactor", "Exercise", "Diet",
-				  "MMSE", "WMS", "WAIS", "TMT", "SVS", "NEO")
+				  "MMSE" #, "WMS", "WAIS", "TMT", "SVS", "NEO"
+				  )
   SubTestTotal = length(SubTestList)
   
   # 1. Source R Code of each Sub Test
   # You should change to your path.
-  LoadTaskPath = 'D:\\Dropbox\\GIBMS_BMLGoh\\ADM\\Data\\Code\\LoadEachTest'
+  LoadTaskPath = "D:\\Dropbox\\GIBMS_BMLGoh\\ADM\\Data\\Code\\LoadEachTest"
   setwd(LoadTaskPath)
   for (SubTestNum in 1:SubTestTotal) {
     Str = paste("source('Load", SubTestList[SubTestNum], ".r', encoding = 'utf-8')", sep = "")
 	eval(parse(text = Str))
   }
-
+  
   # 2. Declaration Variance
   for (SubTestNum in 1:SubTestTotal) {
     if (SubTestNum == 1) {
@@ -66,53 +70,7 @@ ADMNeuroPsyLoadCSV <- function(CsvList) {
 	}
   }
   
-  # matrix first, data frame last
-  eval(parse(text = paste("Data = data.frame(", 
-    # Profile
-    LoadProfile(3, NowCodingNum), 
-    # Body parameter
-    LoadBody(3, NowCodingNum), 
-    # Handiness
-    LoadHandiness(3, NowCodingNum), 
-    # GDS
-    LoadGDS(3, NowCodingNum), 
-    # Self-Evaluation Scale
-    LoadSelfEva(3, NowCodingNum), 
-    # State-Trait Anxiety Inventory (STAI)
-    LoadSTAT(3, NowCodingNum), 
-    # AD8
-    LoadAD8(3, NowCodingNum), 
-    # Demographic
-    LoadDemo(3, NowCodingNum), 
-    # Language
-    LoadLanguage(3, NowCodingNum), 
-    # Self and Family Medical History
-    LoadMedHistory(3, NowCodingNum), 
-    # Disorder Factor
-    LoadDisFactor(3, NowCodingNum), 
-    # Exercise
-    LoadExercise(3, NowCodingNum), 
-    # Diet
-    LoadDiet(3, NowCodingNum), 
-    ####################################    
-    # MMSE
-    LoadMMSE(3, NowCodingNum), 
-    ####################################
-    # WMS
-    LoadWMS(3, NowCodingNum), 
-    ####################################
-    # WAIS
-    LoadWAIS(3, NowCodingNum), 
-    ####################################
-    # TMT
-    LoadTMT(3, NowCodingNum), 
-    ####################################
-    # SVS
-    LoadSVS(3, NowCodingNum), 
-    ####################################
-    # NEO
-    LoadNEO(3, NowCodingNum),
-	")", sep = "")))
-
-	return(Data)
+  # 4. Data Frame Construction
+  DataDF = as.data.frame(Data)
+  return(DataDF)
 }

@@ -27,7 +27,7 @@ LoadSTAT <- function(Task, CodingNum, LoadTaskPath) {
 	} else {
 	  VarName[VarNameNum] = VarName[VarNameNum]
 	}
-	if (as.numeric(VarName[VarNameNum]) <= 20) {
+	if (VarNameNum <= 20) {
 	  VarName[VarNameNum] = paste("State_", VarName[VarNameNum], sep = "")
 	} else {
 	  VarName[VarNameNum] = paste("Trait_", VarName[VarNameNum], sep = "")

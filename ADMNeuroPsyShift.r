@@ -8,7 +8,7 @@
 # 141001 skylikewater - first release
 #
 
-ADMNeuroPsyNorm <- function(CodingSheetFolderPath) {
+ADMNeuroPsyShift <- function(CodingSheetFolderPath) {
   # You should change to your path.
   CodingSheetFolderPath = 'D:\\Dropbox\\GIBMS_BMLGoh\\ADM\\Data\\CodingSheetCSV'
   # data path
@@ -20,7 +20,7 @@ ADMNeuroPsyNorm <- function(CodingSheetFolderPath) {
   LatestCodingNum = as.numeric(substr(CsvList[length(CsvList)],start=5,stop=7)) # get latest coding done
   # so this code only can use in filename : "ADMSXXX.csv", XXX for Subj. Num
 
-  for (CsvListNum in 1:length(CsvList)) {
+  for (CsvListNum in 2:10) {
     NowCodingNum = as.numeric(substr(CsvList[CsvListNum],start = 5,stop = 7))
 	# don't load header, missing data put null
 	DataTemp = read.csv(CsvList[CsvListNum], header = FALSE, na.string = "NULL")
@@ -28,21 +28,32 @@ ADMNeuroPsyNorm <- function(CodingSheetFolderPath) {
 	for (NameNum in 1:length(DataTempName)) {
 	  Str = paste(DataTempName[NameNum], " = as.character(DataTemp$", DataTempName[NameNum], ")", sep = "")
 	  eval(parse(text = Str))
+	  # 插入
+	  #Str = paste(DataTempName[NameNum], " = c(", DataTempName[NameNum], "[1:59], '', '', ", DataTempName[NameNum], "[60:length(", DataTempName[NameNum],")])", sep = "")
+	  #eval(parse(text = Str))
 	}
 	
-	#V3[4] = as.character(V4[4])
-	#V3[5] = as.character(V4[5])
-	#V4[4] = as.character(V6[4])
-	#V4[5] = as.character(V6[5])
-	#V5[4] = as.character(V8[4])
-	#V5[5] = as.character(V8[5])
+	#V1[60] = "目前抽菸"
+	#V2[60] = "目前抽量"
+	#V3[60] = "目前菸齡"
+	#V4[60] = "曾有抽菸"
+	#V5[60] = "曾有菸量"
+	#V6[60] = "曾有菸齡"
+	#V7[60] = "喝酒習慣"
+	#V1[61] = V1[63]
+	#V2[61] = V2[63]
+	#V7[61] = V3[63]
 	
-	#V6[4] = ""
-	#V6[5] = ""
-	#V7[4] = ""
-	#V7[5] = ""
-	#V8[4] = ""
-	#V8[5] = ""
+	#V1[62] = "目前檳榔"
+	#V2[62] = "目前檳量"
+	#V3[62] = "目前檳齡"
+	#V4[62] = "曾有檳榔"
+	#V5[62] = "曾有檳量"
+	#V6[62] = "曾有檳齡"
+	#V1[63] = V4[63]
+	#V2[63] = ""
+	#V3[63] = ""
+
 	
 	for (NameNum in 1:length(DataTempName)) {
 	  if (NameNum == 1) {

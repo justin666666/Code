@@ -27,6 +27,6 @@ ADMNeuroPsy <- function(CodingSheetFolderPath) {
   setwd('D:\\Dropbox\\GIBMS_BMLGoh\\ADM\\Data') # turn back to origin path
   
   Now12=format(Sys.time(), "%y%m%d%H%M%S")
-  write.csv(Data, file = paste("ADMNeuroPsy",Now12,".csv",sep=""))
+  write.table(Data, file = paste("ADMNeuroPsy",Now12,".csv", sep = ""), row.names = FALSE, sep = ",")
   save(Data, file = paste("ADMNeuroPsy",Now12,".rdata",sep=""))
 }

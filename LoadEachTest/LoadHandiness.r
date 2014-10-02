@@ -25,10 +25,10 @@ LoadHandiness <- function(Task, CodingNum, LoadTaskPath) {
 			  "Spoon", "Broom", "Lighter", "Box", "Kick", "EyeMajor",
 			  "SibLeft", "SibRight", "ChildLeft", "ChildRight")
   VarName = paste("Hand_", VarName, sep = "")
-  VarType = c(array(2,dim = c(7,1)),
-              array(2,dim = c(6,1)),
-			  array(2,dim = c(6,1)),
-              array(1,dim = c(4,1)))
+  VarType = c(array(1,dim = c(7,1)),
+              array(1,dim = c(6,1)),
+			  array(1,dim = c(6,1)),
+              array(2,dim = c(4,1)))
   VarXDim = c(1:7,
               1:6,
 			  1:6,
