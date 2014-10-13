@@ -10,6 +10,7 @@
 # History:
 # 140915 skylikewater - first release
 # 141002 skylikewater - reconstruction
+# 141013 skylikewater - fix Y coordination
 #
 
 LoadLanguage <- function(Task, CodingNum, LoadTaskPath) {
@@ -33,7 +34,7 @@ LoadLanguage <- function(Task, CodingNum, LoadTaskPath) {
   VarName = paste("Lan", VarNameTemp, sep = "")
   VarType = c(array(1,dim = c(15,1)))
   VarXDim = c(1:5, 1:5, 1:5)
-  VarYDim = c(array(47,dim = c(8,1)), array(49,dim = c(8,1)), array(51,dim = c(8,1)))
+  VarYDim = c(array(47,dim = c(5,1)), array(49,dim = c(5,1)), array(51,dim = c(5,1)))
   
   Results = LoadTask(Task, CodingNum, VarName, VarType, VarXDim, VarYDim)
   return(Results)
